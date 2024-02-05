@@ -13,6 +13,11 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <% flash.each do |message_type, message| %>
+        <div class="bg-blue-300 text-white" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>
