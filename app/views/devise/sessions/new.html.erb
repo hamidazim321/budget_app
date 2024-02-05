@@ -6,7 +6,7 @@
       </div>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "current-password",  placeholder: "password #{@minimum_password_length} characters minimum", class: "w-full border-b border-0 ring-0 border-slate-300 focus:border-gray-600 focus:border-b-2"  %>
+        <%= f.password_field :password, autocomplete: "current-password",  placeholder: "password", class: "w-full border-b border-0 ring-0 border-slate-300 focus:border-gray-600 focus:border-b-2"  %>
       </div>
 
       <% if devise_mapping.rememberable? %>
