@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
     @groups = Group.where(author_id: current_user.id)
   end
 
+  def show
+    @group = Group.includes(group_transactions: :budget_transaction).find_by_id(params[:id])
+  end
+
   def new
     @group = Group.new
   end

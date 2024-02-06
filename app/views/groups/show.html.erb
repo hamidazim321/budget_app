@@ -1,0 +1,22 @@
+<section class="border min-h-screen bg-slate-100 flex flex-col">
+  <div>
+    Total spent
+  </div>
+  <ul class="p-3 flex flex-col gap-3">
+    <% if @group.group_transactions.empty? %>
+      <h1>No transactions yet<h1>
+    <%else%>
+      <% @group.group_transactions.each do |group_transaction| %>
+        <li class="flex items-center justify-between border p-2 bg-white">
+          <div>
+            <p><%= group_transaction.budget_transaction.name%></p>
+            <span class="text-xs text-text-colo"><%= group_transaction.created_at.strftime("%d %B %Y") %></span>
+          </div>
+          <div>
+            <span>$<%= group_transaction.budget_transaction.amount%></span>
+          </div>
+        </li>
+      <%end%>
+    <%end%>
+  </ul>
+</section>
