@@ -7,17 +7,23 @@ class BudgetTransactionsController < ApplicationController
 
   def new
     @group = Group.find_by_id(params[:group_id])
+    @groups = Group.where(author: current_user)
     @budget_transaction = BudgetTransaction.new
     @header_title = 'New Transaction'
   end
 
   def create
+    @group = params[:group_id]
+    @groups = params[:group_ids]
     @budget_transaction = current_user.budget_transactions.build(budget_transaction_params)
-
     if @budget_transaction.save
-      group = Group.find(params[:group_id])
-      GroupTransaction.create(budget_transaction: @budget_transaction, group:)
-      redirect_to group_path(group)
+      GroupTransaction.create(budget_transaction: @budget_transaction, group_id: @group)
+      unless @groups == nil || @groups.empty?
+        @groups.each do |group_id|
+          GroupTransaction.create(budget_transaction: @budget_transaction, group_id: group_id)
+        end
+      end
+      redirect_to group_path(@group)
       flash[:notice] = 'Transaction was successfully created.'
     else
       flash[:error] = @budget_transaction.errors.full_messages.to_sentence
@@ -30,4 +36,5 @@ class BudgetTransactionsController < ApplicationController
   def budget_transaction_params
     params.require(:budget_transaction).permit(:name, :amount)
   end
+
 end
