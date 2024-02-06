@@ -1,9 +1,8 @@
 class BudgetTransactionsController < ApplicationController
-
   def show
     @budget_transaction = BudgetTransaction.find_by_id(params[:id])
     @group = Group.find_by_id(params[:group_id])
-    @header_title = "Transaction"
+    @header_title = 'Transaction'
   end
 
   def new
@@ -17,7 +16,7 @@ class BudgetTransactionsController < ApplicationController
 
     if @budget_transaction.save
       group = Group.find(params[:group_id])
-      GroupTransaction.create(budget_transaction: @budget_transaction, group: group)
+      GroupTransaction.create(budget_transaction: @budget_transaction, group:)
       redirect_to group_path(group)
       flash[:notice] = 'Transaction was successfully created.'
     else

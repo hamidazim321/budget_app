@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :header_title
 
   def header_title
-    return @header_title || nil
+    @header_title || nil
   end
 
   protected

@@ -1,6 +1,12 @@
 <section class="border min-h-screen bg-slate-100 flex flex-col">
-  <div>
-    Total spent
+  <div class="text-center bg-white shadow-md text-text-color">
+    <span>
+      <% if @group.group_transactions.empty? %>
+        Total spendings $0
+      <%else%>
+        Total spendings $<%= @group.group_transactions.sum { |gt| gt.budget_transaction.amount } %>
+      <%end%>
+    </span>
   </div>
   <ul class="p-3 flex flex-col gap-3">
     <% if @group.group_transactions.empty? %>
