@@ -1,8 +1,24 @@
-<ul>
-  <% @groups.each do |group|%>
-    <li>
-      <p><%= group.name%></p>
-      <%= image_tag group.icon%>
-    </li>
-  <%end%>
-</ul>
+<section class="border min-h-screen bg-slate-100 flex flex-col">
+  <div>
+    Total amount of transactions
+  </div>
+  <ul class="p-3 flex flex-col gap-3">
+    <% @groups.each do |group|%>
+      <li class="flex items-center gap-2 border p-2 bg-white">
+        <%= image_tag group.icon%>
+        <div class="flex justify-between w-full">
+          <div>
+            <p><%= group.name%></p>
+            <span class="text-xs text-text-color"><%= group.created_at.strftime("%d %B %Y")%></span>
+          </div>
+          <div>
+            <p>2$2</p>
+          </div>
+        </div>
+      </li>
+    <%end%>
+  </ul>
+  <div class="mt-auto p-2 bg-second-color">
+    <%= link_to "Add new category", new_group_path, class: "inline-block w-full px-5 py-3 text-base font-medium text-center text-white focus:outline-none border border-white"%>
+  </div>
+</section>
