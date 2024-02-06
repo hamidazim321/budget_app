@@ -7,15 +7,17 @@
       <h1>No transactions yet<h1>
     <%else%>
       <% @group.group_transactions.each do |group_transaction| %>
-        <li class="flex items-center justify-between border p-2 bg-white">
-          <div>
-            <p><%= group_transaction.budget_transaction.name%></p>
-            <span class="text-xs text-text-colo"><%= group_transaction.created_at.strftime("%d %B %Y") %></span>
-          </div>
-          <div>
-            <span>$<%= group_transaction.budget_transaction.amount%></span>
-          </div>
-        </li>
+        <%= link_to group_budget_transaction_path(@group, group_transaction.budget_transaction) do%>
+          <li class="flex items-center justify-between border p-2 bg-white">
+            <div>
+              <p><%= group_transaction.budget_transaction.name%></p>
+              <span class="text-xs text-text-colo"><%= group_transaction.created_at.strftime("%d %B %Y") %></span>
+            </div>
+            <div>
+              <span>$<%= group_transaction.budget_transaction.amount%></span>
+            </div>
+          </li>
+        <%end%>
       <%end%>
     <%end%>
   </ul>
