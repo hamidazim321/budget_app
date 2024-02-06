@@ -31,6 +31,16 @@ class BudgetTransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    @budget_transaction = BudgetTransaction.find_by_id(params[:id])
+    group_id = params[:group_id]
+    if @budget_transaction.destroy
+      redirect_to group_path(group_id), notice: "Transaction deleted"
+    else
+      flash[:error] = @budget_transaction.errors.full_messages.to_sentence
+    end
+  end
+
   private
 
   def budget_transaction_params

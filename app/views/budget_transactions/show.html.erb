@@ -13,4 +13,7 @@
       <span>$<%= @budget_transaction.amount %></span>
     </div>
   </article>
+  <div class="bg-red-600 p-2">
+    <%= button_to "Delete Transaction", group_budget_transaction_path(@group, @budget_transaction), method: :delete, class: "inline-block w-full px-5 py-3 text-base font-medium text-center text-white focus:outline-none border border-white"%>
+  </div>
 </section>
