@@ -3,10 +3,12 @@ class BudgetTransactionsController < ApplicationController
   def show
     @budget_transaction = BudgetTransaction.find_by_id(params[:id])
     @group = Group.find_by_id(params[:group_id])
+    @header_title = "Transaction"
   end
 
   def new
     @budget_transaction = BudgetTransaction.new
+    @header_title = 'New Transaction'
   end
 
   def create

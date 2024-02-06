@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <%= render "layouts/header"%>
+    <%= render "layouts/header", header_title: header_title%>
     <main class="md:container md:p-4">
       <% flash.each do |message_type, message| %>
         <div class="bg-blue-300 text-white" role="alert">

@@ -1,14 +1,17 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.where(author_id: current_user.id)
+    @header_title = "Categories"
   end
 
   def show
     @group = Group.includes(group_transactions: :budget_transaction).find_by_id(params[:id])
+    @header_title = "Category"
   end
 
   def new
     @group = Group.new
+    @header_title = 'New Category'
   end
 
   def create
