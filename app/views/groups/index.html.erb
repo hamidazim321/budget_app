@@ -1,6 +1,8 @@
 <section class="border min-h-screen bg-slate-100 flex flex-col">
   <div class="text-center bg-white shadow-md text-text-color">
-    <span>Total Spendings $<%= @groups.sum(&:total_amount)%></span>
+    <span>
+      Total Spendings $<%= @groups.sum { |group| group.total_amount.to_i }%>
+    </span>
   </div>
   <ul class="p-3 flex flex-col gap-3">
     <% @groups.each do |group|%>
@@ -13,7 +15,7 @@
               <span class="text-xs text-text-color"><%= group.created_at.strftime("%d %B %Y")%></span>
             </div>
             <div>
-              <span>$<%= group.total_amount%></span>
+              <span>$<%= group.total_amount || 0%></span>
             </div>
           </div>
         </li>

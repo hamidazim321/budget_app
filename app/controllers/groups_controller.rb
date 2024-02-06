@@ -29,6 +29,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find_by_id(params[:id])
+    if @group.destroy
+      flash[:notice] = 'Category deleted'
+      redirect_to groups_path
+    else
+      flash[:error] = @group.errors.full_messages.to_sentence
+      redirect_to request.referrer
+    end
+  end
+
   private
 
   def group_params
