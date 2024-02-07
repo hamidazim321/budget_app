@@ -12,14 +12,16 @@
   </head>
 
   <body>
-    <%= render "layouts/header", header_title: header_title%>
-    <main class="md:container md:p-4">
-      <% flash.each do |message_type, message| %>
-        <div class="bg-blue-300 text-white" role="alert">
-          <%= message %>
-        </div>
-      <% end %>
-      <%= yield %>
-    </main>
+    <div class="flex flex-col h-screen">
+      <%= render "layouts/header", header_title: header_title%>
+      <main class="md:container md:p-4 flex-grow">
+        <% flash.each do |message_type, message| %>
+          <div class="bg-sky-400 text-white w-auto rounded-lg p-2 border border-sky-700 shadow-inner shadow-lg" role="alert">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

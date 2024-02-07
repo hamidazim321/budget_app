@@ -1,4 +1,4 @@
-<section class="p-2 bg-slate-100 min-h-screen">
+<section class="p-2 bg-slate-100 min-h-full flex flex-col">
   <article class="bg-white p-2 flex flex-col gap-2">
     <div class="flex gap-2 items-center border-b py-2">
       <%= image_tag(@group.icon)%>
@@ -13,7 +13,7 @@
       <span>$<%= @budget_transaction.amount %></span>
     </div>
   </article>
-  <div class="bg-red-600 p-2">
+  <div class="bg-red-600 p-2 mt-auto">
     <%= button_to "Delete Transaction", group_budget_transaction_path(@group, @budget_transaction), method: :delete, class: "inline-block w-full px-5 py-3 text-base font-medium text-center text-white focus:outline-none border border-white"%>
   </div>
 </section>
