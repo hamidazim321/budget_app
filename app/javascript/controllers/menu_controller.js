@@ -6,4 +6,8 @@ export default class extends Controller {
     let element = document.getElementById(id)
     element.classList.toggle('hidden')
   }
+
+  historyBack(){
+    history.back()
+  }
 }

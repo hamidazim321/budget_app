@@ -1,8 +1,8 @@
 <nav class="bg-main-color border-gray-200 py-2 md:py-0 md:px-4">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between md:gap-5 md:justify-between mx-auto md:p-4">
-    <%= link_to root_path do%>
+    <button data-controller="menu" data-action="click->menu#historyBack" type="button">
       <%= image_tag("https://img.icons8.com/ios-filled/50/FFFFFF/back.png", size: "30x30")%>
-    <%end%>
+    </button>
     <% if header_title%>
       <span class="text-white"><%= header_title%></span>
     <%end%>
