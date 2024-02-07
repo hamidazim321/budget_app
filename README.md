@@ -85,7 +85,7 @@ Install Ruby and Rails on your local machine
 
 Install this project with:
 
-```git clone git@github.com:hamidazim321/recipe_app.git```
+```git clone git@github.com:hamidazim321/budget_app.git```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
