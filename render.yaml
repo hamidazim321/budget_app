@@ -1,22 +1,18 @@
 databases:
-  - name: BudgetBuddyDB
-    databaseName: budgetbuddydb
-    user: hamid_azim
-    plan: free
+  - name: budgetappdb
+    databaseName: postgres_sql_x4sz
+    user: postgres_sql_x4sz_user
 
 services:
   - type: web
-    name: BudgetBuddy
+    name: budgetapp
     runtime: ruby
-    plan: free
     buildCommand: "./bin/render-build.sh"
-    startCommand: "./bin/rails server -e production"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: BudgetBuddyDB
+          name: budgetappdb
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
-      - key: WEB_CONCURRENCY
-        value: 2 # sensible default
