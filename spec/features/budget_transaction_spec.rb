@@ -18,13 +18,12 @@ RSpec.feature 'BudgetTransactions', type: :feature do
       end
     end
 
-    # rubocop:disable Layout/LineLength
     it 'should show details about the transaction' do
       expect(page).to have_content(@budget_transaction.name)
       expect(page).to have_content(@budget_transaction.amount)
-      expect(page).to have_content("#{@budget_transaction.created_at.strftime('%d %B %Y')} At #{@budget_transaction.created_at.in_time_zone.strftime('%I:%M %p')}")
+      expect(page).to have_content(@budget_transaction.created_at.strftime('%d %B %Y'))
+      expect(page).to have_content(@budget_transaction.created_at.in_time_zone.strftime('%I:%M %p'))
     end
-    # rubocop:enable Layout/LineLength
 
     it 'should have a button to delete the transaction' do
       expect(page).to have_button('Delete Transaction')
