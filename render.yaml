@@ -1,6 +1,6 @@
 databases:
   - name: BudgetBuddy
-    databaseName: BudgetBuddyDB
+    databaseName: BudgetBuddy
     user: hamid_azim
     plan: free
 
