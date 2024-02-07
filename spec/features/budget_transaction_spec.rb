@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'BudgetTransactions', type: :feature do
   before(:each) do
-    @user = User.create(name: 'hamid', email: 'hdm@gmail.com', password: '123456', password_confirmation: '123456',
-                        id: 1)
+    @user = User.create(name: 'hamid', email: 'hdm@gmail.com', password: '123456', password_confirmation: '123456')
     @budget_transaction = BudgetTransaction.create(name: 'test', amount: 23, author_id: @user.id)
     @group = Group.create(author_id: @user.id, name: 'test', icon: 'http://test.com')
     @group_transaction = GroupTransaction.create(budget_transaction: @budget_transaction, group: @group)
